@@ -1,0 +1,10 @@
+.Spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.Spinner > * {
+  margin: auto;
+}
