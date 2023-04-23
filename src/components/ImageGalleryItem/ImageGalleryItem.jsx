@@ -10,7 +10,7 @@ export default class ImageGalleryItem extends Component {
       tags: PropTypes.string.isRequired,
       largeImageURL: PropTypes.string.isRequired,
     }).isRequired,
-    index: PropTypes.number.isRequired,
+    index: PropTypes.number,
   };
 
   state = {
