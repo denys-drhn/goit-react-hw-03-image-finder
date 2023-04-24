@@ -7,11 +7,9 @@ const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
   static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    image: PropTypes.shape({
-      largeImageURL: PropTypes.string.isRequired,
-      tags: PropTypes.string.isRequired,
-    }).isRequired,
+    tags: PropTypes.string.isRequired,
+    largeImage: PropTypes.string.isRequired,
+    onCloseModal: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -24,27 +22,23 @@ export default class Modal extends Component {
 
   handleKeyDown = e => {
     if (e.code === 'Escape') {
-      this.props.onClose();
+      this.props.onCloseModal();
     }
   };
 
   handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      this.props.onClose();
+      this.props.onCloseModal();
     }
   };
 
   render() {
-    const { image } = this.props;
+    const { tags, largeImage } = this.props;
 
     return createPortal(
       <div className={css.Overlay} onClick={this.handleBackdropClick}>
         <div className={css.Modal}>
-          <img
-            className={css.ModalImage}
-            src={image.largeImageURL}
-            alt={image.tags}
-          />
+          <img src={largeImage} alt={tags} />
         </div>
       </div>,
       modalRoot
