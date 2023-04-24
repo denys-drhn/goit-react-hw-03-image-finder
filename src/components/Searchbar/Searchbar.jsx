@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import css from './Searchbar.module.css';
+import { toast } from 'react-toastify';
 
 export default class Searchbar extends Component {
   static propTypes = {
@@ -8,22 +9,22 @@ export default class Searchbar extends Component {
   };
 
   state = {
-    imageName: '',
+    search: '',
   };
 
-  handleNameChange = event => {
-    this.setState({ imageName: event.currentTarget.value.toLowerCase() });
+  handleChange = event => {
+    this.setState({ search: event.currentTarget.value.toLowerCase() });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.imageName.trim() === '') {
+    if (this.state.search.trim() === '') {
       // если строка пустая и мbl нажали кнопку поиска
-      alert('please fill in the input field');
+      toast.error('Please fill in the input field');
       return;
     }
-    this.props.onSubmit(this.state.imageName); // props из App которому мbl передаем state из єтого компонента в state App
-    this.setState({ imageName: '' }); // ?
+    this.props.onSubmit(this.state.search); // props из App которому мbl передаем state из єтого компонента в state App
+    this.setState({ search: '' }); // reset
   };
 
   render() {
@@ -36,9 +37,9 @@ export default class Searchbar extends Component {
 
           <input
             className={css.SearchFormInput}
-            name="imageName"
-            value={this.state.imageName}
-            onChange={this.handleNameChange}
+            name="search"
+            value={this.state.search}
+            onChange={this.handleChange}
             type="text"
             autoComplete="off"
             autoFocus
