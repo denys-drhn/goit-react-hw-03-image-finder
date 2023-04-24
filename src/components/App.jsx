@@ -38,9 +38,7 @@ export class App extends Component {
 
       const data = await getImages(query, page);
       if (data.hits.length === 0) {
-        toast.error(
-          "We didn't find anything for this search :(  Try another option"
-        );
+        toast.error('Sorry, there are no images found');
         return;
       }
       this.setState(({ images }) => ({
@@ -101,7 +99,7 @@ export class App extends Component {
           </div>
         )}
         {/* // Notification Container // */}
-        <ToastContainer autoClose={2000} theme="dark" />
+        <ToastContainer autoClose={4000} theme="light" />
       </>
     );
   }
