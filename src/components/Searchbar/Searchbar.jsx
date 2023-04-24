@@ -20,7 +20,7 @@ export default class Searchbar extends Component {
     event.preventDefault();
     if (this.state.search.trim() === '') {
       // если строка пустая и мbl нажали кнопку поиска
-      toast.error('Please fill in the input field');
+      toast.error('Please, fill in the input field');
       return;
     }
     this.props.onSubmit(this.state.search); // props из App которому мbl передаем state из єтого компонента в state App
