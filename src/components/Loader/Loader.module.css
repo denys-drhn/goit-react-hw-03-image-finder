@@ -1,10 +1,10 @@
-.Spinner {
+.Loader {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.Spinner > * {
+.Loader > * {
   margin: auto;
 }
