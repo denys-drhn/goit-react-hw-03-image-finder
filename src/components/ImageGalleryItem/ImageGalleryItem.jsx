@@ -5,11 +5,10 @@ const ImageGalleryItem = ({
   webformatURL,
   tags,
   largeImageURL,
-  index,
   onOpenModal,
 }) => {
   return (
-    <li key={index} className={css.ImageGalleryItem}>
+    <li className={css.ImageGalleryItem}>
       <img
         className={css.ImageGalleryItemImage}
         src={webformatURL}
